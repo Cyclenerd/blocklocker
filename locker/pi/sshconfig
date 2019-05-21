@@ -1,0 +1,5 @@
+# Blocklocker Shop Back End
+Host shop-back-end
+	Hostname <IP_BLOCKLOCKER_SHOP_BACK_END>
+	Port 22
+	User pi

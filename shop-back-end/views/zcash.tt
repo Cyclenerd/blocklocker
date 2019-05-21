@@ -1,0 +1,28 @@
+<h2>Current State of the Block Chain</h2>
+
+<dl>
+    <dt>The <b>name</b> of the block chain:
+        <dd>[% getblockchaininfo.chain %]
+    <dt>Estimate of what percentage of the block chain transactions have been <b>verified</b> so far, starting at 0.0 and increasing to 1.0 for fully verified:
+        <dd>[% getblockchaininfo.verificationprogress | format('%.2f') %]
+    <dt>The number of validated <b>blocks</b> in the local best block chain:
+        <dd>[% getblockchaininfo.blocks %]
+    <dt>The number of validated <b>headers</b> in the local best headers chain (This number may be higher than the number of blocks):
+        <dd>[% getblockchaininfo.headers %]
+    <dt>The <b>difficulty</b> of the highest-height block in the best block chain:
+        <dd>[% getblockchaininfo.difficulty %]
+    <dt>The <b>hash of the header</b> of the highest validated block in the best block chain, encoded as hex in RPC byte order:
+        <dd>[% getblockchaininfo.bestblockhash %]
+    <dt>Commitments
+        <dd>[% getblockchaininfo.commitments %]
+    <dt>Consensus
+        <dd>Chaintip [% getblockchaininfo.consensus.chaintip %]
+        <dd>Next: [% getblockchaininfo.consensus.nextblock %]
+</dl>
+
+<h2>Zcash Links</h2>
+
+<ul>
+    <li><a href="https://explorer.zcha.in/statistics/usage">Usage</a>
+    <li><a href="https://explorer.zcha.in/statistics/timeseries?supply=false&hashrate=false">Statistics</a>
+</ul>

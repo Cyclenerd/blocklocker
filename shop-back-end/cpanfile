@@ -1,0 +1,22 @@
+requires "Dancer2" => "0.205002";
+requires "Dancer2::Plugin::Auth::HTTP::Basic::DWIW" => "0.05";
+requires "YAML" => "1.13";
+requires "DBI" => "1.631";
+requires "DBD::SQLite" => "0";
+requires "JSON" => "2.90";
+requires "LWP::UserAgent" => "6.15";
+requires "LWP::Protocol::https" => "0";
+requires "Zcash::RPC::Client" => "1.01";
+requires "Template::Toolkit" => "0";
+requires "Template::Plugin::Date" => "2.78";
+requires "Plack::Middleware::Deflater" => "0.12";
+requires "Plack::Handler::Starman" => "0";
+
+recommends "URL::Encode::XS"  => "0";
+recommends "CGI::Deurl::XS"   => "0";
+recommends "HTTP::Parser::XS" => "0";
+
+on "test" => sub {
+    requires "Test::More"            => "0";
+    requires "HTTP::Request::Common" => "0";
+};

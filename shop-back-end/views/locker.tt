@@ -1,0 +1,25 @@
+<table>
+<tr>
+    <th>Door
+    <th>Product
+    <th>EUR
+    <th>BTC
+    <th>ETH
+    <th>ZEC
+    <th>Sale
+[% FOREACH door IN [1..doors] %]
+<tr>
+    <td><a href="/admin/door/[% door %]">Door [% door %]</a>
+    [% FOREACH id IN products.keys.nsort %]
+        [% IF door == products.$id.door_id %]
+            <td>[% products.$id.product_name || 'NO NAME' | html %]
+            <td>[% products.$id.product_price_eur | format('%.8f') | html %]
+            <td>[% products.$id.product_price_btc | format('%.8f') | html %]
+            <td>[% products.$id.product_price_eth | format('%.8f') | html %]
+            <td>[% products.$id.product_price_zec | format('%.8f') | html %]
+            <td>[% IF products.$id.door_reserved %]<b style="color:red">[% products.$id.door_reserved %]</b>[% END %]
+        [% END %]
+    [% END %]
+</tr>
+[% END %]
+</table>

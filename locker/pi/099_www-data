@@ -1,0 +1,2 @@
+# passwordless sudo functionality.
+www-data ALL=(ALL) NOPASSWD: /usr/bin/raspi-gpio

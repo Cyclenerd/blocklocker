@@ -1,0 +1,10 @@
+{
+  "product_id": 1,
+  "product_price_zec": 0.0019,
+  "product_price_eur": 0.5,
+  "product_price_btc": 6.1e-05,
+  "product_price_eth": 0.00074,
+  "number_available": 3,
+  "product_img_url": "https://media.giphy.com/media/unFLKoAV3TkXe/giphy.gif",
+  "product_name": "H20"
+}

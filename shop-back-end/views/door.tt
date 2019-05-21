@@ -1,0 +1,44 @@
+[% IF door.door_reserved %]<h2 style="color:red">Reserved !!! Order process started!</h2>[% END %]
+
+<h2>Open</h2>
+
+<form action="/admin/open/[% door_id | html %]" method=POST>
+    <input type=submit value=OPEN>
+</form>
+
+
+<h2>Edit</h2>
+
+<form action="" method=POST>
+    <dl>
+        <dt><b>Product</b>:
+            <dd>
+                <select name="door_product_id">
+                    <option value="0">--- empty ---</option>
+                    [% FOREACH id IN products.keys.nsort %]
+                    <option 
+                        [%- IF id == door.door_product_id %] selected [% END -%]
+                        value="[% id %]">
+                        [% products.$id.product_name || 'NO NAME' | html %]
+                        [
+                        [% products.$id.product_price_eur | format('%.8f') | html %] EUR
+                        /
+                        [% products.$id.product_price_zec | format('%.8f') | html %] ZEC
+                        ]
+                    </option>
+                    [% END %]
+                </select>
+        <dt>Sale ID:
+            <dd><input type=text name=door_reserved value="[% door.door_reserved | html %]" readonly size=25>
+    </dl>
+    <input type=submit value=SAVE>
+</form>
+
+
+<h2>Delete</h2>
+
+Only if you really know what you are doing!!!11
+
+<pre>
+    curl -u "ADMIN-USERNAME:ADMIN-PASSWORD" -X DELETE [% request.uri_for('/admin/door').replace('http://', 'https://') %]/[% door_id | html %]
+</pre>

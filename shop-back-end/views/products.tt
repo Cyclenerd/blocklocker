@@ -1,0 +1,43 @@
+[% IF products.size %]
+    <table>
+    <tr>
+        <th>ID
+        <th>Name
+        <th>EUR
+        <th>BTC
+        <th>ETH
+        <th>ZEC
+    </tr>
+    [% FOREACH id IN products.keys.nsort %]
+        <tr>
+            <td>[% id %]
+            <td>
+                <a href="/admin/product/[% id %]">
+                    [% products.$id.product_name || 'NO NAME' | html %]
+                </a>
+            <td>[% products.$id.product_price_eur | format('%.8f') | html %]
+            <td>[% products.$id.product_price_btc | format('%.8f') | html %]
+            <td>[% products.$id.product_price_eth | format('%.8f') | html %]
+            <td>[% products.$id.product_price_zec | format('%.8f') | html %]
+        </tr>
+    [% END %]
+    </table>
+[% ELSE %]
+    <p><em>No products</em>
+[% END %]
+
+
+<h2>Add</h2>
+
+<form action="" method=POST>
+    <dl>
+        <dt><b>Name</b> *:
+            <dd><input type=text name=product_name required size=40>
+        <dt>IMG:
+            <dd><input type=text name=product_img_url size=40>
+        <dt><b>EUR</b> *:
+            <dd><input type=text name=product_price_eur required size=25>
+    </dl>
+    <input type=submit value=ADD>
+</form>
+<p><em>* Required</em>

@@ -1,0 +1,40 @@
+[<a href="/api/v1/product/[% product.product_id | html %]">JSON</a>]
+
+<h2>Image</h2>
+
+[% IF product.product_img_url %]
+<img src="[% product.product_img_url %]">
+[% ELSE %]
+<em>No image</em>
+[% END %]
+
+<h2>Edit</h2>
+
+<form action="" method=POST>
+    <dl>
+        <dt>ID: 
+            <dd>[% product.product_id | html %]
+        <dt><b>Name</b> *:
+            <dd><input type=text name=product_name value="[% product.product_name || '' | html %]" required size=40>
+        <dt>IMG:
+            <dd><input type=text name=product_img_url value="[% product.product_img_url || '' | html %]" size=40>
+        <dt><b>EUR</b> *:
+            <dd><input type=text name=product_price_eur value="[% product.product_price_eur | format('%.8f') | html %]" required size=25>
+        <dt>BTC:
+            <dd><input type=text name=product_price_btc value="[% product.product_price_btc | format('%.8f') | html %]" readonly size=25>
+        <dt>ETH:
+            <dd><input type=text name=product_price_eth value="[% product.product_price_eth | format('%.8f') | html %]" readonly size=25>
+        <dt>ZEC:
+            <dd><input type=text name=product_price_zec value="[% product.product_price_zec | format('%.8f') | html %]" readonly size=25>
+    </dl>
+    <input type=submit value=EDIT>
+</form>
+<p><em>* Required</em>
+
+<h2>Delete</h2>
+
+Only if you really know what you are doing!!!11
+
+<pre>
+    curl -u "ADMIN-USERNAME:ADMIN-PASSWORD" -X DELETE [% request.uri_for('/admin/product').replace('http://', 'https://') %]/[% product.product_id | html %]
+</pre>

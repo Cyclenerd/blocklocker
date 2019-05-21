@@ -1,0 +1,7 @@
+alias ll='ls -lah'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown -h now'
+# screen
+alias screen='echo "Disabled! screen starts automatically in the background after every reboot (1 minute uptime). Type ´door´ to connect to the screen."'
+alias door='uptime; echo "==> Please wait 1 minute!"; /usr/bin/screen -dr'
+alias newscreen='/usr/bin/screen'

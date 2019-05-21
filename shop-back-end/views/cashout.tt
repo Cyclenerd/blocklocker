@@ -1,0 +1,57 @@
+[% USE date %]
+<p>Zcash Address: <code>[% zcash_cash_out_address | html %]</code> [% IF settings.zcash_testnet %](<b>TESTNET</b>)[% END %]
+<p>Zcash Transaction Fee: [% zcash_cash_out_fee | format('%.8f') | html %] ZEC
+<form action="" method=POST>
+    <input type=hidden name=really value="1">
+    <input type=submit value="CASH OUT">
+</form>
+<p>After successful cash out, an ID will be displayed. It then takes a while to complete the transaction.
+<h2>Balances</h2>
+<p>Sale status > 1 (active) and not 8 (door open).
+[% IF balances.size %]
+    <table>
+        <tr>
+            <th>Addr.
+            <th>ZEC
+            <th>Sale Status
+            <th>Sale Timestamp
+        </tr>
+        [% FOREACH id IN balances %]
+            <tr>
+                <td>
+                    [% IF id.bitcoin_address %]
+                    <a href="/admin/bitcoin/[% id.bitcoin_address | html %]">
+                        <code>[% id.bitcoin_address | html %]</code>
+                    </a>
+                    [% ELSIF id.ethereum_address %]
+                    <a href="/admin/ethereum/[% id.ethereum_address | html %]">
+                        <code>[% id.ethereum_address | html %]</code>
+                    </a>
+                    [% ELSIF id.zcash_address %]
+                    <a href="/admin/zcash/[% id.zcash_address | html %]">
+                        <code>[% id.zcash_address | html %]</code>
+                    </a>
+                    [% ELSE %]
+                    ???
+                    [% END %]
+                </td>
+                <td>
+                    [% IF id.zcash_opid %]
+                        ✅💸  <code>[% id.zcash_opid | html %]</code>
+                        <!-- zcash-cli z_getoperationstatus [\"OPID\"] -->
+                    [% ELSE %]
+                        [% id.balance_zec | format('%.8f') | html %]
+                    [% END %]
+                </td>
+                <td>
+                    [% id.sale_status || '?' | html %]
+                </td>
+                <td>
+                    [% date.format(id.sale_timestamp || 0, '%d-%b-%Y %H:%M:%S %Z') %]
+                </td>
+            </tr>
+        [% END %]
+    </table>
+[% ELSE %]
+<em>No sales so far</em>
+[% END %]

@@ -1,0 +1,22 @@
+{
+  "2": {
+    "product_price_eth": 0.00444,
+    "product_price_eur": 3,
+    "product_price_btc": 0.000364,
+    "product_price_zec": 0.0117,
+    "product_id": 2,
+    "product_name": "Beer",
+    "number_available": 2,
+    "product_img_url": "https://media.giphy.com/media/l0MYrZOf3nGchoTdK/giphy.gif"
+  },
+  "1": {
+    "product_name": "H20",
+    "product_img_url": "https://media.giphy.com/media/unFLKoAV3TkXe/giphy.gif",
+    "number_available": 3,
+    "product_price_eur": 0.5,
+    "product_price_btc": 6.1e-05,
+    "product_price_eth": 0.00074,
+    "product_id": 1,
+    "product_price_zec": 0.0019
+  }
+}

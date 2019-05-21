@@ -1,0 +1,83 @@
+[% USE date %]
+[% IF sales.size %]
+    <table>
+        <tr>
+            <th>ID
+            <th>Addr.
+            <th>Product
+            <th>EUR
+            <th>BTC
+            <th>ETH
+            <th>ZEC
+            <th>Door
+            <th>Status
+            <th>Timestamp
+        </tr>
+        [% FOREACH id IN sales.keys.nsort %]
+            <tr>
+                <td>[% id %]</td>
+                <td>
+                    [% IF sales.$id.sale_bitcoin_address %]
+                    <a href="/admin/bitcoin/[% sales.$id.sale_bitcoin_address | html %]">
+                        <code>[% sales.$id.sale_bitcoin_address | html %]</code>
+                    </a>
+                    [% ELSIF sales.$id.sale_ethereum_address %]
+                    <a href="/admin/ethereum/[% sales.$id.sale_ethereum_address | html %]">
+                        <code>[% sales.$id.sale_ethereum_address | html %]</code>
+                    </a>
+                    [% ELSIF sales.$id.sale_zcash_address %]
+                    <a href="/admin/zcash/[% sales.$id.sale_zcash_address | html %]">
+                        <code>[% sales.$id.sale_zcash_address | html %]</code>
+                    </a>
+                    [% ELSE %]
+                    ???
+                    [% END %]
+                </td>
+                <td>
+                    [% sales.$id.product_name || '???' | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_price_eur | format('%.8f') | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_price_btc | format('%.8f') | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_price_eth | format('%.8f') | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_price_zec | format('%.8f') | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_door_id || '?' | html %]
+                </td>
+                <td>
+                    [% sales.$id.sale_status || '?' | html %]
+                    [% IF sales.$id.sale_status == 1 %]
+                    💤
+                    [% END %]
+                    [% IF sales.$id.sale_status == 2 %]
+                    ❌💸
+                    [% END %]
+                    [% IF sales.$id.sale_status == 3 %]
+                    ❌💰
+                    [% END %]
+                    [% IF sales.$id.sale_status == 4 %]
+                    ❌🚪
+                    [% END %]
+                    [% IF sales.$id.sale_status == 8 %]
+                    ✅🚪
+                    [% END %]
+                    [% IF sales.$id.sale_status == 9 %]
+                    ✅🤑
+                    [% END %]
+                </td>
+                <td>
+                    [% date.format(sales.$id.sale_timestamp || 0, '%d-%b-%Y %H:%M:%S %Z') %]
+                </td>
+            </tr>
+        [% END %]
+    </table>
+[% ELSE %]
+<em>No sales so far</em>
+[% END %]

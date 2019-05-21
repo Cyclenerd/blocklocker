@@ -1,0 +1,73 @@
+# configuration file for development environment
+
+# the logger engine to use
+# console: log messages to STDOUT (your console where you started the
+#          application server)
+# file:    log message to a file in log/
+logger: "console"
+
+# the log level for this environment
+# core is the lowest, it shows Dancer2's core log messages as well as yours
+# (debug, info, warning and error)
+log: "core"
+
+# should Dancer2 consider warnings as critical errors?
+warnings: 1
+
+# should Dancer2 show a stacktrace when an 5xx error is caught?
+# if set to yes, public/500.html will be ignored and either
+# views/500.tt, 'error_template' template, or a default error template will be used.
+show_errors: 1
+
+# print the banner
+startup_info: 1
+
+# Username/Password for Admin Interface
+admin_user: 'USERNAME'
+admin_password: 'PASSWORD'
+
+# Zcash
+# Address listens for JSON-RPC connections
+zcash_rpc_host: '127.0.0.1'
+# Port
+# 8232 for mainnet RPC
+# 18232 for testnet RPC
+zcash_rpc_port: '18232'
+# User for JSON-RPC api commands
+zcash_rpc_user: 'USERNAME'
+# Password for JSON-RPC api commands
+zcash_rpc_password: 'PASSWORD'
+# Testnet ?
+zcash_testnet: 1
+
+# Zcash Cold Wallet (for Cash Out)
+# Address to which the funds of the sales will be sent
+# https://z.cash/blog/sapling-addresses-turnstile-migration/
+#    zcash-cli z_sendmany "tmSyGzJ42h2wLrRSjHbsLoApFyKEyh79ozk" '[{"address": "ztestsapling1ytey7ttg3nzdd38rxvr8tn363hzral9u5rnjfaurkkqfl8uvqk4mfr5vesf2phvaexaykjagvtr" ,"amount": 1.0}]'
+#    zcash-cli z_getbalance "ztestsapling1ytey7ttg3nzdd38rxvr8tn363hzral9u5rnjfaurkkqfl8uvqk4mfr5vesf2phvaexaykjagvtr"
+zcash_cash_out_address: 'tmSyGzJ42h2wLrRSjHbsLoApFyKEyh79ozk'
+#zcash_cash_out_address: 'ztestsapling1ytey7ttg3nzdd38rxvr8tn363hzral9u5rnjfaurkkqfl8uvqk4mfr5vesf2phvaexaykjagvtr'
+
+# Zcash fee per cash out transaction
+zcash_cash_out_fee: '0.00005'
+
+# Required confirmations so that payment is considered received
+# Possible values 0 , 1, 2, 3, 4
+zcash_confirmations: '1'
+
+# Payment (not confirmations) within ? minutes
+zcash_payment_until: '15'
+
+# Payment confirmations within ? minutes
+zcash_confirmation_until: '30'
+
+# Open door within ? minutes
+open_until: '60'
+
+# Short text with location of the locker
+door_location: '53.565278, 10.001389'
+
+# Fake door
+# Do not really open the door
+# Do not forward a request to door locker
+door_fake: 1

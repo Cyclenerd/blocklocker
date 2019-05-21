@@ -1,0 +1,15 @@
+[<a href="/api/v1/status/zcash/[% zcash_address | html %]">JSON</a>]
+
+<h2>Balace</h2>
+
+[% z_getbalance | format('%.8f') | html %] ZEC
+
+<h2>Received</h2>
+
+<table>
+[% FOREACH tx IN z_listreceivedbyaddress %]
+    <tr>
+        <td><a href="[% settings.zcash_testnet ? 'https://explorer.testnet.z.cash/tx/' : 'https://explorer.zcha.in/transactions/' %][% tx.txid | html %]"><code>[% tx.txid | html %]</code></a>
+        <td>[% tx.amount | format('%.8f') | html %] ZEC
+[% END %]
+</table>

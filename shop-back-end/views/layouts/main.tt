@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8">
+<title>[% IF title %][% title %] - [% END %][% settings.appname %]</title>
+<style>
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+</style>
+<nav>
+    [% IF settings.zcash_testnet %]<b style=color:red>TESTNET</b> : [% END %]
+    <a href="/admin/zcash">Zcash Blockchain</a> (<a href="/api/v1/zcash">JSON</a>) |
+    <a href="/api/v1/door">Door Locker (JSON)</a> |
+    <a href="/api/v1/shop">Products for Sale (JSON)</a>
+    [
+    Admin:
+    <a href="/admin/products">Products</a> |
+    <a href="/admin/locker">Locker</a> |
+    <a href="/admin/sales">Sales</a> |
+    <a href="/admin/convert">Convert</a> |
+    <a href="/admin/reorg">Reorganization</a> |
+    <a href="/admin/cashout">Cash Out</a>
+    ]
+</nav>
+
+[% IF title %]<h1>[% title %]</h1>[% END %]
+
+[% content %]
+
+[% IF settings.startup_info %]
+<!--
+Perl:    [% perl_version %]
+Dancer2: [% dancer_version %]
+-->
+[% END %]
+<hr>
+</body>
+</html>
