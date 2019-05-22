@@ -98,7 +98,7 @@ export default {
       this.$http.get('/api/v1/door').then(response => {
         this.doorWorking = response.body.status === 'OK'
         this.doorLocation = response.body.location
-      }).catch(e => {
+      }).catch(() => {
         // if the vending machine previously worked or the app is initially starting, show the info dialog once
         if (this.doorWorking === true || typeof this.doorWorking === 'undefined') {
           this.showDoorNotWorking = true

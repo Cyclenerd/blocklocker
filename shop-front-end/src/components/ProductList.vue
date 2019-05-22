@@ -61,7 +61,7 @@ export default {
         response => {
           this.items = response.body
         },
-        response => {}
+        () => {}
       )
     }
   }

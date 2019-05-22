@@ -287,7 +287,7 @@ export default {
             // Bar sollte ca. 10 sekunden sich füllen
             // währenddessen kann nicht erneut DOOR OPEN geklickt werden
           },
-          response => {
+          () => {
             this.showDoorWarning = true
           }
         )
@@ -336,7 +336,7 @@ export default {
                 })
               })
           },
-          response => {}
+          () => {}
         )
     }
   }

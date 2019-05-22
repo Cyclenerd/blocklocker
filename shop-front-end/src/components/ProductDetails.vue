@@ -99,7 +99,7 @@ export default {
         response => {
           this.item = response.body
         },
-        response => {}
+        () => {}
       )
     },
 
@@ -117,7 +117,7 @@ export default {
           const address = response.body[`${key}_address`]
           this.$router.push(`/transaction/${key}/${address}`)
         },
-        response => {}
+        () => {}
       )
     }
   }
